@@ -1,0 +1,816 @@
+
+/* =========================================
+   SISTEM UJIAN ONLINE SMA SIG
+   CSS LENGKAP TERPADU
+   DESAIN AWAL DIPERTAHANKAN
+========================================= */
+
+/* =========================================
+   1. ROOT DAN RESET
+========================================= */
+
+:root {
+  --teal: #087f8c;
+  --teal-dark: #066b76;
+  --ink: #15343b;
+  --muted: #688087;
+  --line: #d9ebed;
+  --surface: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: #eaf4f5;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  width: 100%;
+  font-family: Inter, ui-sans-serif, system-ui, Arial, sans-serif;
+  color: var(--ink);
+
+  /* BACKGROUND AWAL SMA SIG */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(7, 37, 45, .24),
+      rgba(7, 37, 45, .52)
+    ),
+    url('assets/background-sekolah.png')
+    center 38% / cover fixed no-repeat;
+}
+
+body:before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(5, 44, 52, .24),
+    rgba(5, 44, 52, .08)
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+/* =========================================
+   2. LAYOUT UTAMA
+========================================= */
+
+.shell {
+  width: min(100% - 28px, 1000px);
+  margin: 28px auto;
+  position: relative;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* =========================================
+   3. HEADER DAN LOGO SEKOLAH
+========================================= */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 0 auto 22px;
+  max-width: 1000px;
+  padding: 13px 18px;
+  border: 1px solid #ffffff65;
+  border-radius: 18px;
+  background: #ffffffdf;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 34px #092d351f;
+}
+
+.brand img {
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.brand h1 {
+  margin: 0;
+  color: var(--teal);
+  font-size: 27px;
+  letter-spacing: .3px;
+}
+
+.brand p {
+  margin: 3px 0;
+}
+
+.eyebrow,
+.tag {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  font-weight: 850;
+  color: #07808b;
+}
+
+/* =========================================
+   4. PANEL
+========================================= */
+
+.panel {
+  width: 100%;
+  min-width: 0;
+  background: #ffffffF5;
+  border: 1px solid #d9ebed;
+  border-radius: 21px;
+  padding: 28px;
+  box-shadow: 0 18px 55px #092d3530;
+  margin-bottom: 20px;
+  backdrop-filter: blur(14px);
+}
+
+.narrow {
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h2 {
+  margin: 8px 0 10px;
+  font-size: 25px;
+  letter-spacing: -.4px;
+}
+
+h3 {
+  margin: 14px 0 8px;
+}
+
+.muted {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* =========================================
+   5. FORM DAN INPUT
+========================================= */
+
+.panel form {
+  display: grid;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 750;
+}
+
+input {
+  width: 100%;
+  padding: 14px 15px;
+  border: 1px solid #c9dfe2;
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+  background: #fff;
+  color: var(--ink);
+}
+
+input:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 4px #07808b18;
+}
+
+/* =========================================
+   6. TOMBOL
+========================================= */
+
+button {
+  border: 0;
+  border-radius: 12px;
+  background: var(--teal);
+  color: white;
+  padding: 13px 18px;
+  font-weight: 780;
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    transform .15s,
+    background .15s,
+    box-shadow .15s;
+}
+
+button:hover {
+  background: var(--teal-dark);
+  box-shadow: 0 6px 16px #087f8c25;
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.secondary {
+  background: #e8f3f4;
+  color: #17616a;
+}
+
+.secondary:hover {
+  background: #d9ebed;
+  color: #17616a;
+}
+
+.small {
+  padding: 10px 14px;
+}
+
+.message {
+  min-height: 20px;
+  color: #b54735;
+  font-size: 13px;
+}
+
+/* =========================================
+   7. LOGIN ADMIN
+========================================= */
+
+.admin-entry {
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+.admin-entry button {
+  width: 100%;
+}
+
+/* =========================================
+   8. DASHBOARD PESERTA
+========================================= */
+
+.section-head,
+.exam-top,
+.exam-bottom,
+.button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.subjects {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.subject-card {
+  min-width: 0;
+  border: 1px solid #d8eaec;
+  border-radius: 17px;
+  padding: 22px;
+  background: linear-gradient(145deg, #fff, #f3fafa);
+  transition: transform .18s, box-shadow .18s;
+}
+
+.subject-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px #15525c12;
+}
+
+.subject-card p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.subject-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #e2f4f3;
+  color: var(--teal);
+  font-weight: 950;
+}
+
+.subject-card button {
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* =========================================
+   9. HALAMAN UJIAN DAN TIMER
+========================================= */
+
+.timer-wrap {
+  background: #e9f6f5;
+  padding: 12px 18px;
+  border-radius: 14px;
+  text-align: center;
+  min-width: 120px;
+  border: 1px solid #d4eae8;
+}
+
+.timer-wrap span {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #52757a;
+  font-weight: 800;
+}
+
+.timer-wrap strong {
+  display: block;
+  font-size: 27px;
+  color: var(--teal);
+  font-variant-numeric: tabular-nums;
+}
+
+.exam-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.notice {
+  flex: 1;
+  padding: 12px 14px;
+  margin: 0;
+  background: #fff8e7;
+  border: 1px solid #f4e2b2;
+  border-radius: 11px;
+  color: #795b19;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.notice.violation {
+  background: #fff0ef;
+  border-color: #f1c5c0;
+  color: #a52f27;
+}
+
+iframe {
+  display: block;
+  width: 100%;
+  height: 68vh;
+  min-height: 520px;
+  border: 1px solid #d8eaec;
+  border-radius: 13px;
+  background: #f8fbfb;
+}
+
+.exam-bottom {
+  margin-top: 16px;
+}
+
+/* =========================================
+   10. PENGUNCIAN UJIAN
+========================================= */
+
+.exam-frame-wrap {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.locked-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  border-radius: 13px;
+  background: rgba(8, 35, 42, .88);
+}
+
+.locked-box {
+  width: min(100%, 420px);
+  padding: 28px;
+  border-radius: 18px;
+  background: white;
+  text-align: center;
+  box-shadow: 0 15px 40px #0004;
+}
+
+.locked-icon {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.locked-box h2 {
+  color: #b54735;
+}
+
+.locked-box h3 {
+  color: #b54735;
+}
+
+.locked-box p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* =========================================
+   11. HALAMAN SELESAI
+========================================= */
+
+.done-mark {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #e4f6ed;
+  color: #16814c;
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+
+/* =========================================
+   12. DASHBOARD ADMIN
+========================================= */
+
+.admin-heading {
+  margin-bottom: 20px;
+}
+
+.admin-heading h2 {
+  color: var(--teal);
+}
+
+.admin-heading .muted {
+  margin-bottom: 0;
+}
+
+/* STATISTIK ADMIN */
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 20px 0;
+}
+
+.stat-card {
+  min-width: 0;
+  padding: 19px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: linear-gradient(145deg, #fff, #f3fafa);
+}
+
+.stat-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.stat-card strong {
+  display: block;
+  margin-top: 8px;
+  color: var(--teal);
+  font-size: 29px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* TOOLBAR ADMIN */
+
+.admin-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.admin-toolbar h3 {
+  margin: 0 0 5px;
+}
+
+.admin-toolbar p {
+  margin: 0;
+}
+
+/* =========================================
+   13. TABEL MONITORING PESERTA
+========================================= */
+
+.table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: white;
+  -webkit-overflow-scrolling: touch;
+}
+
+.admin-table {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.admin-table th {
+  padding: 14px 12px;
+  background: #eaf5f5;
+  color: var(--teal-dark);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.admin-table td {
+  padding: 13px 12px;
+  border-top: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.admin-table tr:hover td {
+  background: #f7fbfb;
+}
+
+.empty-table {
+  padding: 25px !important;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* =========================================
+   14. STATUS PESERTA
+========================================= */
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 20px;
+  background: #e5f5ed;
+  color: #16814c;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.status-badge.locked {
+  background: #fff0ef;
+  color: #b54735;
+}
+
+.status-badge.finished {
+  background: #e8f3f4;
+  color: #17616a;
+}
+
+/* =========================================
+   15. TOMBOL KONTROL ADMIN
+========================================= */
+
+.control-buttons {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.action-lock,
+.action-unlock,
+.action-finish {
+  padding: 8px 11px;
+  font-size: 12px;
+}
+
+.action-unlock {
+  background: #16814c;
+}
+
+.action-finish {
+  background: #b54735;
+}
+
+.admin-footnote {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* =========================================
+   16. FOOTER
+========================================= */
+
+footer {
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  padding: 18px;
+  text-shadow: 0 1px 4px #0008;
+}
+
+/* =========================================
+   17. TABLET
+========================================= */
+
+@media (max-width: 768px) {
+
+  .admin-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .admin-toolbar {
+    align-items: stretch;
+  }
+
+}
+
+/* =========================================
+   18. HP / MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+
+  body {
+    background-position: 48% center;
+    background-attachment: scroll;
+  }
+
+  .shell {
+    width: min(100% - 20px, 1000px);
+    margin: 12px auto;
+  }
+
+  .brand {
+    padding: 11px 14px;
+    margin-bottom: 14px;
+    gap: 10px;
+  }
+
+  .brand img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .brand h1 {
+    font-size: 23px;
+  }
+
+  .panel {
+    padding: 19px;
+    border-radius: 17px;
+  }
+
+  .subjects {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .section-head,
+  .exam-top,
+  .exam-bottom {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .timer-wrap {
+    width: 100%;
+  }
+
+  .exam-tools {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .exam-tools button {
+    width: 100%;
+  }
+
+  iframe {
+    height: 65vh;
+    min-height: 430px;
+  }
+
+  .button-row > * {
+    flex: 1;
+  }
+
+  .exam-bottom button {
+    width: 100%;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  /* ADMIN MOBILE */
+
+  .admin-heading {
+    align-items: stretch;
+  }
+
+  .admin-heading button {
+    width: 100%;
+  }
+
+  .admin-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .stat-card {
+    padding: 13px;
+  }
+
+  .stat-card strong {
+    font-size: 24px;
+  }
+
+  .admin-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-toolbar button {
+    width: 100%;
+  }
+
+  .admin-table {
+    min-width: 850px;
+  }
+
+  .locked-box {
+    padding: 20px;
+  }
+
+  .control-buttons {
+    min-width: 150px;
+  }
+
+}
+
+/* =========================================
+   19. HP KECIL
+========================================= */
+
+@media (max-width: 380px) {
+
+  .brand h1 {
+    font-size: 19px;
+  }
+
+  .brand img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .panel {
+    padding: 15px;
+  }
+
+  .stat-card {
+    padding: 11px;
+  }
+
+  .stat-card strong {
+    font-size: 21px;
+  }
+
+  .button-row {
+    flex-direction: column;
+  }
+
+}
+
+/* =========================================
+   20. AKSESIBILITAS
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *:before,
+  *:after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+
+}
